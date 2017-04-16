@@ -56,11 +56,25 @@ def checkout_charge(request):
 	stripe.api_key = "sk_test_A2LYgrlHFf4X2Xb9BnWrRvWW"
 
 
+
+
 	if request.method == "POST":
-		#elx = request.content_params['stripeToken']
-		return HttpResponse("hey work")
+		token = request.POST['StripeToken']
+
+
+		charge = stripe.Charge.create(
+			amount=2000,
+			currency="usd",
+			source = token,
+			description = "Second charge!"
+		)
+
+		print("This is charge: ", charge.description)
+
+		return HttpResponse(request.POST['StripeToken'])
 
 	else:
+		#charge lookup?
 		return HttpResponse("This thing")
 
 

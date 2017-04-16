@@ -78,6 +78,7 @@ function stripeTokenHandler(token) {
 	//document.write(token.id);
 	//document.write(token.card.exp_month);
 
+	//document.write(form.children)
 
 
 	form.submit();
