@@ -71,7 +71,7 @@ def checkout_charge(request):
 
 		print("This is charge: ", charge.description)
 
-		return HttpResponse(request.POST['StripeToken'])
+		return HttpResponse(token)
 
 	else:
 		#charge lookup?
