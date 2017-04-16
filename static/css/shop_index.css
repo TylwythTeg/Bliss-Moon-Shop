@@ -39,3 +39,23 @@ border-color: red;
 
 
 }
+
+.the-thing {
+
+	text-align: center;
+}
+
+.exp-year {
+
+	text-align: center;
+}
+
+#payment-form {
+
+	background-color: rgb(100,3,60);
+	width: 700px;
+
+
+	margin-left: auto;
+	margin-right: auto;
+}
