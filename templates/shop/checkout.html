@@ -43,21 +43,51 @@
         <form action="charge/" method="post" id="payment-form">
             <div class="form-row">
                 {% csrf_token %}
-                <label for="card-element">
-                    Credit or debit card
-                </label>
-                <div id="card-number">
-                    <!--Stripe Card Element -->
-                </div>
-                <div id="card-expiry">
-                    <!--Stripe Card Element -->
-                </div>
-                <div id="card-cvc">
-                    <!--Stripe Card Element -->
-                </div>
-                <div id="postal-code">
-                    <!--Stripe Card Element -->
-                </div>
+
+                <p>
+                    {{ form.amount }}
+                </p>
+
+
+
+
+                <p>
+                    <label for="card-number">
+                        Credit or debit card
+                    </label>
+
+                
+                    <div id="card-number">
+                        <!--Stripe Card Element -->
+                    </div>
+                </p>
+
+                <p>
+                    <label for="card-expiry">
+                        Expiration
+                    </label>
+                    <div id="card-expiry">
+                        <!--Stripe Card Element -->
+                    </div>
+                </p>
+
+                <p>
+                    <label for="card-cvc">
+                        CVC
+                    </label>
+                    <div id="card-cvc">
+                        <!--Stripe Card Element -->
+                    </div>
+                </p>
+
+                <p>
+                    <label for="postal-code">
+                        ZIP
+                    </label>
+                    <div id="postal-code">
+                        <!--Stripe Card Element -->
+                    </div>
+                <p>
 
                     <!-- Errors -->
                 <div id="card-errors"></div>
@@ -67,114 +97,6 @@
 
             <button>Submit Payment</button>
 
-        </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <form action="charge/" method="post">
-            {% csrf_token %}
-
-            <!-- Fields -->
-            <!-- Card Number -->
-                <!-- Label -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4 the-thing">
-                    {{ form.card_number.label }}
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-                <!-- Field -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4">
-                    {{ form.card_number }}
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-            
-            <!-- Expiration -->
-                <!-- Label -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4">
-                    Expiration
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-                <!-- Fields -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-2">
-                    {{ form.expiration_month }}
-                </div>
-                <div class = "col-xs-2 exp-year">
-                    {{ form.expiration_year }}
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-
-            <!-- CVC -->
-                <!-- Label -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4">
-                    {{ form.cvc.label }}
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-                <!-- Field -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4">
-                     {{ form.cvc }}
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-
-            <!-- Zip Code -->
-                <!-- Label -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4">
-                    {{ form.zip.label }}
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-                <!-- Field -->
-            <div class="row">
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4">
-                     {{ form.zip }}
-                </div>
-                <div class = "col-xs-4"></div>
-            </div>
-
-
-
-            <!-- Submit Button -->
-            <div class="row">
-
-                <div class = "col-xs-4"></div>
-                <div class = "col-xs-4">
-                 <input type ="submit" value="Submit" />
-                </div>
-                <div class = "col-xs-4"></div>
-
-            </div>
-
-            
-            
         </form>
 
 

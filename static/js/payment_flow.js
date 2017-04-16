@@ -4,8 +4,8 @@ var elements = stripe.elements();
 
 var style = {
 	base: {
-		fontSize: '16px',
-		lineHeight: '24px',
+		//fontSize: '16px',
+		//lineHeight: '24px',
 	}
 };
 
@@ -128,5 +128,5 @@ var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(event) {
 	submitListener(event);
-})
+});
 

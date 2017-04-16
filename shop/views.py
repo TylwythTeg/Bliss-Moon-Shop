@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .forms import CardForm
+from .forms import CardForm, DonateForm
 
 import stripe
 
@@ -38,7 +38,7 @@ def checkout(request):
 			return HttpResponseRedirect('thanks/')
 
 	else:
-		form = CardForm()
+		form = DonateForm(auto_id=True)
 
 		
 	return render(request,'shop/checkout.html', {'form': form})
@@ -59,14 +59,23 @@ def checkout_charge(request):
 
 
 	if request.method == "POST":
+		form = DonateForm(request.POST)
+		if form.is_valid():
+			amount = form.cleaned_data['amount']
+			#do token too? or can't being token not part of django form. hmm.
+
+
 		token = request.POST['StripeToken']
+
+		amount *= 100
+		amount = int(amount)
 
 
 		charge = stripe.Charge.create(
-			amount=2000,
+			amount=amount,
 			currency="usd",
 			source = token,
-			description = "Second charge!"
+			description = "Donation"
 		)
 
 		print("This is charge: ", charge.description)

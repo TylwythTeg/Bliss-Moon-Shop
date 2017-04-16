@@ -52,10 +52,17 @@ border-color: red;
 
 #payment-form {
 
-	background-color: rgb(100,3,60);
-	width: 700px;
 
+	width: 50%;
 
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#amount {
+	border: none;
+	border-color: transparent;
+
+
+
 }
