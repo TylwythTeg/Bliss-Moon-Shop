@@ -27,7 +27,7 @@ def charge(request):
 		
 	return render(request,'shop/charge.html', {'form': form})
 
-def checkout(request):
+def donate(request):
 	if request.method == "POST":
 		form = CardForm(request.POST)
 		#form.cleaned_data
@@ -41,7 +41,7 @@ def checkout(request):
 		form = DonateForm(auto_id=True)
 
 		
-	return render(request,'shop/checkout.html', {'form': form})
+	return render(request,'shop/donate.html', {'form': form})
 
 
 
@@ -52,7 +52,7 @@ def checkout(request):
 
 
 
-def checkout_charge(request):
+def donate_charge(request):
 	stripe.api_key = "sk_test_A2LYgrlHFf4X2Xb9BnWrRvWW"
 
 
@@ -60,9 +60,12 @@ def checkout_charge(request):
 
 	if request.method == "POST":
 		form = DonateForm(request.POST)
-		if form.is_valid():
-			amount = form.cleaned_data['amount']
-			#do token too? or can't being token not part of django form. hmm.
+
+		if not form.is_valid():
+			return HttpResonse("Charge Failure: Form Invalid")
+
+		amount = form.cleaned_data['amount']
+		#do token too? or can't being token not part of django form. hmm.
 
 
 		token = request.POST['StripeToken']
@@ -78,9 +81,9 @@ def checkout_charge(request):
 			description = "Donation"
 		)
 
-		print("This is charge: ", charge.description)
+		print("This is charge: ", charge.id)
 
-		return HttpResponse(token)
+		return HttpResponse("Thank you for your donation. Your charge id#: " + charge.id)
 
 	else:
 		#charge lookup?
